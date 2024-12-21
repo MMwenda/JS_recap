@@ -1,1 +1,10 @@
 Data buffer =  a region of memory used to store data temporarily while it is being moved from one place to another
+
+
+- Why use callback functions so much (async):  Imagine users trying to use an app with a synchronous function. If something causes a delay in one function, all other clients will have to wait for that one function to finish before they can do what they wanted. This can make the app slow and unresponsive.
+
+- basically;  Using asynchronous callback functions allows the app to handle other tasks while waiting for the delayed function to complete, making the app faster and more responsive.
+
+
+- CALLBACK HELL: using the asynch too much, making the code to be dependent on the executionability of the previous line. [nested callbacks]
+= SOLULU:  Using Promises or Async/Await

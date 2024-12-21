@@ -11,3 +11,6 @@ const textOut = `This is what we know about the avocado: "${textIn}" \nCreated o
 //Writing the file,first param is the path, second param specifying what is being wrote
 fs.writeFileSync('./txt/output.txt', textOut);
 console.log('File has been written');
+
+//THIS IS SYNCHRONOUS - each line of code waits for the previous line of code to finish before executing
+//[BLOCKING CODE]
