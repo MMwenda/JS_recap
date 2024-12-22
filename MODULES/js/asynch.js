@@ -15,6 +15,9 @@
 const fs = require('fs');
 
 fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
+    if(err){
+        console.error('Error reading file💥:', err);
+    }
     fs.readFile(`./txt/${data1}.txt`, 'utf-8', (err, data) => {
         //console.log(data); //prints data in read-this.txt
         fs.readFile(`./txt/append.txt`, 'utf-8', (err, data3) => {
@@ -22,7 +25,11 @@ fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
             
             const textOut = `${data}\n${data3}`;
             fs.writeFile('./txt/final.txt', textOut, 'utf-8', err => {
-                console.log('Your file has been written');
+                if(err){
+                    console.error('Error writing file:', err);
+                    return;
+                }
+                console.log('Your file has been written 😁');
             })
             
         })
