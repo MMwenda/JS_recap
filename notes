@@ -8,3 +8,8 @@ Data buffer =  a region of memory used to store data temporarily while it is bei
 
 - CALLBACK HELL: using the asynch too much, making the code to be dependent on the executionability of the previous line. [nested callbacks]
 = SOLULU:  Using Promises or Async/Await
+
+
+- Express.js: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. 
+
+= It facilitates the rapid development of Node-based web applications by providing a simple interface to CREATE ROUTES, HANDLE REQUESTS & MANAGE MIDDLEWARE.
