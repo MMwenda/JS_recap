@@ -14,7 +14,7 @@
 
 const fs = require('fs');
 
-fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
+fs.readFile(`./txt/start.txt`, 'utf-8', (err, data1) => {
     if(err){
         console.error('Error reading file💥:', err);
     }

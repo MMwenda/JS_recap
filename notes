@@ -1,15 +1,28 @@
 Data buffer =  a region of memory used to store data temporarily while it is being moved from one place to another
 
 
-- Why use callback functions so much (async):  Imagine users trying to use an app with a synchronous function. If something causes a delay in one function, all other clients will have to wait for that one function to finish before they can do what they wanted. This can make the app slow and unresponsive.
+- Why use callback functions so much (async): Imagine users trying to use an app with a synchronous function. If something causes a delay in one function, all other clients will have to wait for that one function to finish before they can do what they wanted. This can make the app slow and unresponsive.
 
-- basically;  Using asynchronous callback functions allows the app to handle other tasks while waiting for the delayed function to complete, making the app faster and more responsive.
+- Basically: Using asynchronous callback functions allows the app to handle other tasks while waiting for the delayed function to complete, making the app faster and more responsive.
 
+- Callback Hell: Using async too much, making the code dependent on the execution of the previous line (nested callbacks).
+    - Solution: Using Promises or Async/Await.
 
-- CALLBACK HELL: using the asynch too much, making the code to be dependent on the executionability of the previous line. [nested callbacks]
-= SOLULU:  Using Promises or Async/Await
+- Express.js: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+    - It facilitates the rapid development of Node-based web applications by providing a simple interface to create routes, handle requests, and manage middleware.
 
+- API: A service from where we can request some data.
 
-- Express.js: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. 
+- When to use `__dirname`:
+    - Example: `.dev-data/data.json`
+        - The initial `.` represents the directory in which the script that we're currently executing is located, which is not ideal.
+    - `__dirname` gives you the absolute path to the current directory regardless of where the script is executed from, avoiding confusion that arises from relative paths, which differ based on the current working directory when the script is run.
 
-= It facilitates the rapid development of Node-based web applications by providing a simple interface to CREATE ROUTES, HANDLE REQUESTS & MANAGE MIDDLEWARE.
+- JSON // String manipulation:
+    - `JSON.parse(data);` => Method used to change data to JSON form.
+        - Data can only be manipulated in JSON form.
+    - `JSON.stringify(productData);` => Method used to change JSON data to string data, in order for it to be read.
+        - Data can only be read by the engine in string form, but can only be manipulated or used in JSON form.
+        
+        
+ *We turn the readFile code to readFileSync and put it at the top in order to avoid the data t be read all over again whenever there is a request

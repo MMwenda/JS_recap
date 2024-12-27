@@ -4,12 +4,14 @@ const http = require('http'); // http module for creating server
 const PORT = 8000;
 
 const server = http.createServer((req, res) => {
-    const pathName = req.url;
+    const pathName = req.url; // url of the request
     if (pathName === '/overview' ) {
-        res.end('This is overview page');
+        res.end('<h1>This is overview page</h1>');
+        console.log(`A new request on '${pathName}' received on ${new Date().toLocaleString('en-US')}`);  
     } 
     else if (pathName === '/product') {
-        res.end('This is product page');
+        res.end('<h1>This is product page</h1>');
+        console.log(`A new request on '${pathName}' received on ${new Date().toLocaleString('en-US')}`);
     } 
     else {
         res.writeHead(404, {
@@ -21,5 +23,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`Server is running on port: ${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
