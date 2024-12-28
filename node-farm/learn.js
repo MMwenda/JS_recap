@@ -6,18 +6,28 @@ const PORT = 8000;
 
 //read data from a file
 
-const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
-const dataObj = JSON.parse(data); //parse the data to JSON
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8'); //read the data and ('utf-8') converts it into string
+const dataObj = JSON.parse(data); //parse the data to JSON fo r manipulation
+
+const productNamesJSON = dataObj.map((element) => {
+    // element.productName;
+    //console.log(`${element.productName} -> ${element.price} in USD, from ${element.from}.`); //practice
+
+    return `${element.productName} -> ${element.price} in USD, from ${element.from}.`; //return the product name, price and from [ARRAY]
+}).join(' <br>'); //join the array with a new line
+const productNames = JSON.stringify(productNamesJSON);
 
 const server = http.createServer((req, res) =>{
     const pathName = req.url;
 
     if(pathName === '/overview'){
-        res.end('This is the overview');
+        res.end('<h1>This is the overview</h1>');
         console.log(`A new request on '${pathName}' received on ${new Date().toLocaleString('en-US')}`);  
     }
-    else if(pathName === '/product'){
-        res.end('This is the product');
+    else if(pathName === '/products'){
+        res.writeHead(200, //status code 200 means success
+            {'Content-type': 'text/html'}); //header for html data
+        res.end(`<h1> This is the products page</h1> <br> ${productNames}`); //make the product name, price and from to be displayed
         console.log(`A new request on '${pathName}' received on ${new Date().toLocaleString('en-US')}`);  
     }
     else if(pathName === '/api'){
@@ -45,6 +55,7 @@ const server = http.createServer((req, res) =>{
 
         res.writeHead(200, //status code 200 means success
             {'Content-type': 'application/json'}); //header for json data
+
         res.end(data); //data is already string 👍🏽
         console.log(`A new request on '${pathName}' received on ${new Date().toLocaleString('en-US')}`);
     }
@@ -53,7 +64,7 @@ const server = http.createServer((req, res) =>{
             'Content-type': 'text/html', //header for html data
             'my-own-header': 'hello-world'
         });
-        res.end('<h1>Page not found</h1>');
+        res.end('<h1>404</h1> <br> <i>OOPS, PAGE NOT FOUND</i>');
         console.log(`A new request on '${pathName}' received on ${new Date().toLocaleString('en-US')}`);  
     }
 })
